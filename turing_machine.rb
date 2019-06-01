@@ -12,6 +12,8 @@ class TuringMachine
   end
 
   def run
+    puts inspect
+
     write_symbol, transition, next_state = get_order
 
     tape.write(write_symbol, head_position)
@@ -20,6 +22,7 @@ class TuringMachine
     when 'R'; go_right
     when 'L'; go_left
     when '!'
+      puts inspect
       return tape.cells.count('1')
     end
 
