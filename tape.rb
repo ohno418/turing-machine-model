@@ -1,24 +1,29 @@
 class Tape
-  attr_accessor :cells, :head_position
+  attr_accessor :cells
 
   ELEMENTS = ['0', '1', '+'].freeze
 
   def initialize(str)
     @cells = str.chars
-    @head_position = 0
     unless appropriate_tape?
       raise ArgumentError, 'Inappropriate cells.'
     end
   end
 
-  def inspect
-    if cells.include?('+')
-      cells.join(nil).split('+')
-           .map { |i| i.to_i(2).to_s }
-           .join('+')
-    else
-      cells.join(nil).to_i(2).to_s
+  def symbol(position)
+    cells[position]
+  end
+
+  def write(new_symbol, position)
+    unless ELEMENTS.include?(new_symbol)
+      raise ArgumentError, 'Inappropriate symbol.'
     end
+
+    cells[position] = new_symbol
+  end
+
+  def inspect
+    cells.join(nil)
   end
 
   private

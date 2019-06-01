@@ -21,22 +21,29 @@ rescue ArgumentError
 end
 print "\n"
 
+print 'Tape#symbol: '
+tape = Tape.new('01+011')
+if tape.symbol(0) == '0'
+  print '.'
+else
+  print 'x'
+end
+if tape.symbol(2) == '+'
+  print '.'
+else
+  print 'x'
+end
+print "\n"
 
 print 'Tape#inspect: '
-tape = Tape.new('01+011')
-if tape.inspect == '1+3'
+str = '01+011'
+if Tape.new(str).inspect == str
   print '.'
 else
   print 'x'
 end
-tape = Tape.new('0110+01+011')
-if tape.inspect == '6+1+3'
-  print '.'
-else
-  print 'x'
-end
-tape = Tape.new('01011')
-if tape.inspect == '11'
+str = '01011'
+if Tape.new(str).inspect == str
   print '.'
 else
   print 'x'
