@@ -1,4 +1,4 @@
-require_relative './tape'
+require_relative '../tape'
 
 print 'Tape#initialize: '
 begin
